@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:pv_forecast/utils/colors.dart';
 
 class MainChart extends StatefulWidget {
   const MainChart({super.key});
@@ -8,16 +9,10 @@ class MainChart extends StatefulWidget {
   State<MainChart> createState() => _MainChartState();
 }
 
-class AppColors {
-  static const Color contentColorCyan = Color(0xff4e62cc);
-  static const Color contentColorBlue = Color(0xff4e62cc);
-  static const Color mainGridLineColor = Color(0xff37434d);
-}
-
 class _MainChartState extends State<MainChart> {
   List<Color> gradientColors = [
-    AppColors.contentColorCyan,
-    AppColors.contentColorBlue,
+    contentColorCyan,
+    contentColorBlue,
   ];
 
   bool showAvg = false;
@@ -73,16 +68,12 @@ class _MainChartState extends State<MainChart> {
     switch (value.toInt()) {
       case 2:
         text = const Text('MAR', style: style);
-        break;
       case 5:
         text = const Text('JUN', style: style);
-        break;
       case 8:
         text = const Text('SEP', style: style);
-        break;
       default:
         text = const Text('', style: style);
-        break;
     }
 
     return SideTitleWidget(
@@ -100,13 +91,10 @@ class _MainChartState extends State<MainChart> {
     switch (value.toInt()) {
       case 1:
         text = '10K';
-        break;
       case 3:
         text = '30k';
-        break;
       case 5:
         text = '50k';
-        break;
       default:
         return Container();
     }
@@ -117,31 +105,24 @@ class _MainChartState extends State<MainChart> {
   LineChartData mainData() {
     return LineChartData(
       gridData: FlGridData(
-        show: true,
-        drawVerticalLine: true,
         horizontalInterval: 1,
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
           return const FlLine(
-            color: AppColors.mainGridLineColor,
+            color: mainGridLineColor,
             strokeWidth: 1,
           );
         },
         getDrawingVerticalLine: (value) {
           return const FlLine(
-            color: AppColors.mainGridLineColor,
+            color: mainGridLineColor,
             strokeWidth: 1,
           );
         },
       ),
       titlesData: FlTitlesData(
-        show: true,
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
+        rightTitles: const AxisTitles(),
+        topTitles: const AxisTitles(),
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
@@ -204,8 +185,6 @@ class _MainChartState extends State<MainChart> {
     return LineChartData(
       lineTouchData: const LineTouchData(enabled: false),
       gridData: FlGridData(
-        show: true,
-        drawHorizontalLine: true,
         verticalInterval: 1,
         horizontalInterval: 1,
         getDrawingVerticalLine: (value) {
@@ -222,7 +201,6 @@ class _MainChartState extends State<MainChart> {
         },
       ),
       titlesData: FlTitlesData(
-        show: true,
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
@@ -239,12 +217,8 @@ class _MainChartState extends State<MainChart> {
             interval: 1,
           ),
         ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
+        topTitles: const AxisTitles(),
+        rightTitles: const AxisTitles(),
       ),
       borderData: FlBorderData(
         show: true,
