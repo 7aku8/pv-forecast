@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pv_forecast/components/bottom_nav.dart';
+import 'package:pv_forecast/components/energy_output.dart';
 import 'package:pv_forecast/components/main_chart.dart';
 import 'package:pv_forecast/components/top_bar.dart';
 import 'package:pv_forecast/utils/colors.dart';
@@ -19,6 +20,7 @@ class _DashboardPageState extends State<DashboardPage> {
       appBar: TopBar(),
       body: Column(
         children: [
+          EnergyOutput(),
           MainChart(),
         ],
       ),
