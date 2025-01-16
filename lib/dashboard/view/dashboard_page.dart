@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pv_forecast/components/alert.dart';
 import 'package:pv_forecast/components/bottom_nav.dart';
 import 'package:pv_forecast/components/efficiency.dart';
 import 'package:pv_forecast/components/energy_output.dart';
+import 'package:pv_forecast/components/insights.dart';
 import 'package:pv_forecast/components/main_chart.dart';
 import 'package:pv_forecast/components/tiles.dart';
 import 'package:pv_forecast/components/top_bar.dart';
@@ -30,6 +32,14 @@ class _DashboardPageState extends State<DashboardPage> {
           MainChart(),
           SizedBox(height: 8),
           Efficiency(),
+          SizedBox(height: 24),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Insights()],
+          ),
+          SizedBox(height: 24),
+          Alert(),
+          SizedBox(height: 16),
         ],
       ),
       bottomNavigationBar: const BottomNav(),
