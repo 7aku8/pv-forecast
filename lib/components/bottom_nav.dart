@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:pv_forecast/utils/colors.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -58,7 +59,7 @@ class _BottomNavState extends State<BottomNav> {
       height: 70,
       decoration: boxDecorationDefault(
         borderRadius: radius(0),
-        color: context.cardColor,
+        color: backgroundColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,7 +71,7 @@ class _BottomNavState extends State<BottomNav> {
               padding: const EdgeInsets.all(8),
               height: 45,
               decoration: BoxDecoration(
-                color: i == selectedIndex ? colorShade[i] : context.cardColor,
+                color: i == selectedIndex ? colorShade[i] : backgroundColor,
                 borderRadius: radius(20),
               ),
               child: Row(
