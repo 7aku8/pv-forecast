@@ -13,31 +13,61 @@ class _HomeViewState extends State<ForecastView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Top section with user avatar and notifications
-
-        // Panels and energy info section
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                '30 panels',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 4),
-              Text('2 LG360N1C-N5 360W', style: TextStyle(color: Colors.grey)),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.power_settings_new, color: Colors.orange),
-                  // Placeholder for solar panel image
-                  Container(
-                    height: 100,
-                    width: 150,
-                    color: Colors.grey.shade200,
-                    child: Center(child: Icon(Icons.image, size: 40, color: Colors.grey)),
+                  RichText(
+                    text: const TextSpan(
+                      style: TextStyle(color: Colors.black87),
+                      children: [
+                        TextSpan(
+                          text: '30',
+                          style: TextStyle(fontSize: 72),
+                        ),
+                        TextSpan(
+                          text: 'panels',
+                          style: TextStyle(color: Colors.black54, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Text('2 LG360N1C-N5 360W',
+                      style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(
+                      Icons.power_settings_new,
+                      color: Colors.black87,
+                      size: 32,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orangeAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                  const SizedBox(width: 16),
+                  IconButton(
+                    icon: const Icon(
+                        Icons.restart_alt, color: Colors.black87, size: 32),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -45,6 +75,21 @@ class _HomeViewState extends State<ForecastView> {
           ),
         ),
         SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Icon(Icons.power_settings_new, color: Colors.orange),
+            // Placeholder for solar panel image
+            Container(
+              height: 100,
+              width: 150,
+              color: Colors.grey.shade200,
+              child: Center(
+                  child: Icon(Icons.image, size: 40, color: Colors.grey)),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
         // Energy generation and income section
         Expanded(
           child: ListView(
@@ -56,15 +101,21 @@ class _HomeViewState extends State<ForecastView> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
-                    BoxShadow(color: Colors.grey.shade300, blurRadius: 10, offset: Offset(0, 5)),
+                    BoxShadow(
+                        color: Colors.grey.shade300,
+                        blurRadius: 10,
+                        offset: Offset(0, 5)),
                   ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('8 kWh', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                    Text('8 kWh',
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold)),
                     SizedBox(height: 4),
-                    Text('Generate electricity', style: TextStyle(color: Colors.grey)),
+                    Text('Generate electricity',
+                        style: TextStyle(color: Colors.grey)),
                     SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,7 +132,8 @@ class _HomeViewState extends State<ForecastView> {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.orange,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
                           ),
                           child: Text('Sell Electricity'),
                         ),
@@ -103,9 +155,12 @@ class _HomeViewState extends State<ForecastView> {
                       ),
                       child: Column(
                         children: [
-                          Text('21200 USA', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          Text('21200 USA',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
                           SizedBox(height: 4),
-                          Text('Current Income', style: TextStyle(color: Colors.grey)),
+                          Text('Current Income',
+                              style: TextStyle(color: Colors.grey)),
                         ],
                       ),
                     ),
@@ -118,14 +173,20 @@ class _HomeViewState extends State<ForecastView> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
-                          BoxShadow(color: Colors.grey.shade300, blurRadius: 10, offset: Offset(0, 5)),
+                          BoxShadow(
+                              color: Colors.grey.shade300,
+                              blurRadius: 10,
+                              offset: Offset(0, 5)),
                         ],
                       ),
                       child: Column(
                         children: [
-                          Text('120 KW/H', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          Text('120 KW/H',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
                           SizedBox(height: 4),
-                          Text('Time usage', style: TextStyle(color: Colors.grey)),
+                          Text('Time usage',
+                              style: TextStyle(color: Colors.grey)),
                         ],
                       ),
                     ),
