@@ -59,8 +59,8 @@ class _HomeViewState extends State<ForecastView> {
                   ),
                   const SizedBox(width: 16),
                   IconButton(
-                    icon: const Icon(
-                        Icons.restart_alt, color: Colors.black87, size: 32),
+                    icon: const Icon(Icons.restart_alt,
+                        color: Colors.black87, size: 32),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -73,6 +73,21 @@ class _HomeViewState extends State<ForecastView> {
               ),
             ],
           ),
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/panels.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Text('dupa')),
+            ),
+          ],
         ),
         SizedBox(height: 16),
         Row(
