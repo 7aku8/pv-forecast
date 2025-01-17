@@ -57,10 +57,12 @@ class _DashboardPageState extends State<DashboardPage>
             _updateCurrentPageIndex(state.selectedPage);
           }
         },
-        child: PageView(
-          controller: _pageViewController,
-          onPageChanged: _handlePageViewChanged,
-          children: _pages,
+        child: SafeArea(
+          child: PageView(
+            controller: _pageViewController,
+            onPageChanged: _handlePageViewChanged,
+            children: _pages,
+          ),
         ),
       ),
       bottomNavigationBar: const BottomNav(),
