@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pv_forecast/components/history_labels.dart';
+import 'package:pv_forecast/components/history_linear_chart.dart';
 
 class HistoryView extends StatefulWidget {
   const HistoryView({super.key});
@@ -10,6 +12,12 @@ class HistoryView extends StatefulWidget {
 class _HomeViewState extends State<HistoryView> {
   @override
   Widget build(BuildContext context) {
-    return const Text('history');
+    return const Column(
+      children: [
+        HistoryLinearChart(),
+        HistoryLabels(),
+        SizedBox(height: 32),
+      ],
+    );
   }
 }
