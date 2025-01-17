@@ -12,7 +12,6 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   List<IconData> navbarIcons = [
     Icons.home,
-    Icons.bar_chart,
     Icons.wb_sunny,
     Icons.notifications,
     Icons.settings,
@@ -20,7 +19,6 @@ class _BottomNavState extends State<BottomNav> {
 
   List widgets = <Widget>[
     Center(child: Text('Home', style: boldTextStyle(size: 24))),
-    Center(child: Text('Dashboard', style: boldTextStyle(size: 24))),
     Center(child: Text('Live data', style: boldTextStyle(size: 24))),
     Center(child: Text('Alerts', style: boldTextStyle(size: 24))),
     Center(child: Text('Settings', style: boldTextStyle(size: 24))),
@@ -28,15 +26,13 @@ class _BottomNavState extends State<BottomNav> {
 
   List<String> bottomNavigationName = [
     'Home',
-    'Search',
-    'Gallery',
-    'Favorite',
-    'Profile',
+    'Live data',
+    'Alerts',
+    'Settings',
   ];
 
   List<Color> color = [
     Colors.blue,
-    Colors.orange,
     Colors.purple,
     Colors.red,
     Colors.green,
@@ -44,7 +40,6 @@ class _BottomNavState extends State<BottomNav> {
 
   List<Color> colorShade = [
     Colors.blue.shade100,
-    Colors.orange.shade100,
     Colors.purple.shade100,
     Colors.red.shade100,
     Colors.green.shade100,
