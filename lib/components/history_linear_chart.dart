@@ -24,80 +24,75 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AspectRatio(
-          aspectRatio: 1.70,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              right: 18,
-              left: 12,
-              top: 24,
-              bottom: 12,
-            ),
-            child: LineChart(
+    return Padding(
+      padding: const EdgeInsets.all(16.0), // Consistent padding
+      child: AspectRatio(
+        aspectRatio: 1.5, // Adjusted for a better layout
+        child: Stack(
+          children: <Widget>[
+            LineChart(
               showAvg ? avgData() : mainData(),
             ),
-          ),
-        ),
-        Positioned(
-          top: 16,
-          right: 16,
-          child: SizedBox(
-            width: 60,
-            height: 34,
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  showAvg = !showAvg;
-                });
-              },
-              child: Text(
-                'avg',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+            Positioned(
+              top: 16,
+              right: 16,
+              child: SizedBox(
+                width: 60,
+                height: 34,
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      showAvg = !showAvg;
+                    });
+                  },
+                  child: Text(
+                    'avg',
+                    style: TextStyle(
+                      fontSize: 10, // Updated to match WeeklyBarChart
+                      color:
+                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 12,
+      fontSize: 10, // Updated to match WeeklyBarChart
     );
 
     String text;
     switch (value.toInt()) {
       case 0:
-        text = '00';
+        text = '00:00';
         break;
       case 3:
-        text = '03';
+        text = '03:00';
         break;
       case 6:
-        text = '06';
+        text = '06:00';
         break;
       case 9:
-        text = '09';
+        text = '09:00';
         break;
       case 12:
-        text = '12';
+        text = '12:00';
         break;
       case 15:
-        text = '15';
+        text = '15:00';
         break;
       default:
         text = '';
     }
 
     return SideTitleWidget(
-      space: 6,
+      space: 6, // Consistent spacing
       meta: meta,
       child: Text(text, style: style),
     );
@@ -105,8 +100,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 12,
+      fontSize: 10, // Updated to match WeeklyBarChart
     );
 
     String text;
@@ -145,7 +139,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
-            reservedSize: 22,
+            reservedSize: 20,
             interval: 3,
             getTitlesWidget: bottomTitleWidgets,
           ),
@@ -179,7 +173,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
           ],
           isCurved: true,
           gradient: LinearGradient(colors: producedGradientColors),
-          barWidth: 4,
+          barWidth: 4, // Thicker line width
           isStrokeCapRound: true,
           dotData: const FlDotData(show: false),
           belowBarData: BarAreaData(
@@ -203,7 +197,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
           ],
           isCurved: true,
           gradient: LinearGradient(colors: consumedGradientColors),
-          barWidth: 4,
+          barWidth: 4, // Thicker line width
           isStrokeCapRound: true,
           dotData: const FlDotData(show: false),
           belowBarData: BarAreaData(
@@ -220,7 +214,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
   }
 
   LineChartData avgData() {
-    // Average data logic can remain the same
+    // Average data logic remains the same
     return LineChartData();
   }
 }
