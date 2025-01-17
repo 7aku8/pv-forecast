@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pv_forecast/components/bottom_nav.dart';
 import 'package:pv_forecast/components/top_bar.dart';
+import 'package:pv_forecast/dashboard/state/page/page_bloc.dart';
 import 'package:pv_forecast/dashboard/view/alerts_view.dart';
 import 'package:pv_forecast/dashboard/view/forecast_view.dart';
 import 'package:pv_forecast/dashboard/view/history_view.dart';
@@ -18,13 +21,12 @@ class _DashboardPageState extends State<DashboardPage>
     with TickerProviderStateMixin {
   late PageController _pageViewController;
   late TabController _tabController;
-  int _currentPageIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _pageViewController = PageController();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: _pages.length, vsync: this);
   }
 
   @override
@@ -47,26 +49,33 @@ class _DashboardPageState extends State<DashboardPage>
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: const TopBar(),
-      body: PageView(
-        controller: _pageViewController,
-        onPageChanged: _handlePageViewChanged,
-        children: _pages,
+      body: BlocListener(
+        bloc: context.read<PageBloc>(),
+        listener: (context, state) {
+          if (state is PageSelected) {
+            _updateCurrentPageIndex(state.selectedPage);
+          }
+        },
+        child: PageView(
+          controller: _pageViewController,
+          onPageChanged: _handlePageViewChanged,
+          children: _pages,
+        ),
       ),
+      bottomNavigationBar: const BottomNav(),
     );
   }
 
   void _handlePageViewChanged(int currentPageIndex) {
     _tabController.index = currentPageIndex;
-    setState(() {
-      _currentPageIndex = currentPageIndex;
-    });
+    context.read<PageBloc>().add(SelectPage(currentPageIndex));
   }
 
   void _updateCurrentPageIndex(int index) {
     _tabController.index = index;
     _pageViewController.animateToPage(
       index,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 200),
       curve: Curves.easeInOut,
     );
   }
