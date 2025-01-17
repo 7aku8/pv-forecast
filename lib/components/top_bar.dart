@@ -37,11 +37,29 @@ class _TopBarState extends State<TopBar> {
       ),
       child: BlocBuilder<PageBloc, PageState>(
         builder: (context, state) {
+          Widget topBarContent = const SizedBox();
           if (state is PageSelected) {
-            return _bars[state.selectedPage];
+            topBarContent = _bars[state.selectedPage];
           }
 
-          return const SizedBox();
+          return AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            transitionBuilder: (Widget child, Animation<double> animation) {
+              final offsetAnimation = Tween<Offset>(
+                begin: const Offset(0, -0.5), // Swipe up from top edge
+                end: Offset.zero,
+              ).animate(animation);
+
+              return SlideTransition(
+                position: offsetAnimation,
+                child: FadeTransition(
+                  opacity: animation,
+                  child: child,
+                ),
+              );
+            },
+            child: topBarContent,
+          );
         },
       ),
     );

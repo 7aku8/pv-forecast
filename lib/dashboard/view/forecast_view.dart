@@ -14,19 +14,7 @@ class _HomeViewState extends State<ForecastView> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Top section with user avatar and notifications
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(Icons.notifications, color: Colors.grey),
-              CircleAvatar(
-                backgroundImage: AssetImage('assets/user_avatar.png'), // Replace with actual image
-                radius: 16,
-              ),
-            ],
-          ),
-        ),
+
         // Panels and energy info section
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),

@@ -5,9 +5,14 @@ class ForecastTopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Padding(
+        padding: EdgeInsets.only(bottom: 16),
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
+        Icon(Icons.notifications, color: Colors.grey),
+        SizedBox(width: 16),
+        Text(
           'Forecast',
           style: TextStyle(
             fontSize: 24,
@@ -15,12 +20,14 @@ class ForecastTopBar extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        const Spacer(),
-        IconButton(
-          icon: const Icon(Icons.settings),
-          onPressed: () {},
+        Spacer(),
+        CircleAvatar(
+          backgroundImage: AssetImage('assets/user_avatar.png'),
+          // Replace with actual image
+          radius: 16,
         ),
       ],
+    ),
     );
   }
 }
