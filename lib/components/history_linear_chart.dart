@@ -138,18 +138,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
 
   LineChartData mainData() {
     return LineChartData(
-      gridData: FlGridData(
-        horizontalInterval: 1,
-        verticalInterval: 1,
-        getDrawingHorizontalLine: (value) => const FlLine(
-          color: Color(0xffe7e8ec),
-          strokeWidth: 1,
-        ),
-        getDrawingVerticalLine: (value) => const FlLine(
-          color: Color(0xffe7e8ec),
-          strokeWidth: 1,
-        ),
-      ),
+      gridData: FlGridData(show: false),
       titlesData: FlTitlesData(
         rightTitles: const AxisTitles(),
         topTitles: const AxisTitles(),
@@ -171,8 +160,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
         ),
       ),
       borderData: FlBorderData(
-        show: true,
-        border: Border.all(color: const Color(0xff37434d)),
+        show: false,
       ),
       minX: 0,
       maxX: 15,
