@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pv_forecast/dashboard/view/dashboard_page.dart';
+import 'package:pv_forecast/dashboard/pages/dashboard_page.dart';
 import 'package:pv_forecast/l10n/l10n.dart';
 
 class App extends StatelessWidget {
