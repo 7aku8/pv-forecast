@@ -77,7 +77,7 @@ class _BottomNavState extends State<BottomNav> {
       child: BlocListener(
         bloc: context.read<PageBloc>(),
         listener: (context, state) {
-          if (state is PageSelected) {
+          if (state is PageSelected && state.initiatedBy == InitiatedBy.swipe) {
             setState(() {
               selectedIndex = state.selectedPage;
             });
@@ -106,7 +106,12 @@ class _BottomNavState extends State<BottomNav> {
                           i == selectedIndex ? color[i] : Colors.blueGrey[300],
                     ).onTap(
                       () {
-                        context.read<PageBloc>().add(SelectPage(i));
+                        context.read<PageBloc>().add(
+                              SelectPage(
+                                i,
+                                InitiatedBy.bottomNav,
+                              ),
+                            );
                       },
                       splashColor: context.cardColor,
                     ),

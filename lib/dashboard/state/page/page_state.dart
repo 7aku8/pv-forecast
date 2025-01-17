@@ -5,10 +5,11 @@ sealed class PageState extends Equatable {
 }
 
 final class PageSelected extends PageState {
-  const PageSelected(this.selectedPage);
+  const PageSelected(this.selectedPage, this.initiatedBy);
 
   final int selectedPage;
+  final InitiatedBy initiatedBy;
 
   @override
-  List<Object> get props => [selectedPage];
+  List<Object> get props => [selectedPage, initiatedBy];
 }

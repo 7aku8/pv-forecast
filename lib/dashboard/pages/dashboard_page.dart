@@ -52,7 +52,8 @@ class _DashboardPageState extends State<DashboardPage>
       body: BlocListener(
         bloc: context.read<PageBloc>(),
         listener: (context, state) {
-          if (state is PageSelected) {
+          if (state is PageSelected &&
+              state.initiatedBy == InitiatedBy.bottomNav) {
             _updateCurrentPageIndex(state.selectedPage);
           }
         },
@@ -68,7 +69,12 @@ class _DashboardPageState extends State<DashboardPage>
 
   void _handlePageViewChanged(int currentPageIndex) {
     _tabController.index = currentPageIndex;
-    context.read<PageBloc>().add(SelectPage(currentPageIndex));
+    context.read<PageBloc>().add(
+          SelectPage(
+            currentPageIndex,
+            InitiatedBy.swipe,
+          ),
+        );
   }
 
   void _updateCurrentPageIndex(int index) {

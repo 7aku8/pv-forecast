@@ -5,9 +5,9 @@ part 'page_event.dart';
 part 'page_state.dart';
 
 class PageBloc extends Bloc<PageEvent, PageState> {
-  PageBloc() : super(const PageSelected(1)) {
+  PageBloc() : super(const PageSelected(1, InitiatedBy.bottomNav)) {
     on<SelectPage>((event, emit) {
-      emit(PageSelected(event.pageIndex));
+      emit(PageSelected(event.pageIndex, event.initiatedBy));
     });
   }
 }
