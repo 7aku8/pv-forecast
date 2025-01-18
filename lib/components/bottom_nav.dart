@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -19,14 +18,6 @@ class _BottomNavState extends State<BottomNav> {
     Icons.history_outlined,
     Icons.notifications_outlined,
     Icons.settings_outlined,
-  ];
-
-  List widgets = <Widget>[
-    Center(child: Text('Home', style: boldTextStyle(size: 24))),
-    Center(child: Text('Forecast', style: boldTextStyle(size: 24))),
-    Center(child: Text('History', style: boldTextStyle(size: 24))),
-    Center(child: Text('Alerts', style: boldTextStyle(size: 24))),
-    Center(child: Text('Settings', style: boldTextStyle(size: 24))),
   ];
 
   List<String> bottomNavigationName = [
@@ -85,43 +76,53 @@ class _BottomNavState extends State<BottomNav> {
                   });
                 }
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: navbarIcons.map(
-                  (e) {
-                    final i = navbarIcons.indexOf(e);
-                    return Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          context.read<PageBloc>().add(
-                                SelectPage(
-                                  i,
-                                  InitiatedBy.bottomNav,
-                                ),
-                              );
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 500),
-                          padding: const EdgeInsets.all(23),
-                          decoration: i == selectedIndex
-                              ? BoxDecoration(
-                                  color: Colors.orangeAccent.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(45),
-                                )
-                              : BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                          child: Icon(
-                            e,
-                            size: 26,
-                            color: Colors.black87,
-                          ),
-                        ),
+              child: Stack(
+                children: [
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 150),
+                    curve: Curves.easeInOut,
+                    bottom: 0,
+                    left: selectedIndex *
+                        ((MediaQuery.of(context).size.width - 36) /
+                            5), // 32 is padding, 4 is border
+                    child: Container(
+                      width: (MediaQuery.of(context).size.width - 32) / 5,
+                      height: 76,
+                      decoration: BoxDecoration(
+                        color: Colors.orangeAccent.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(40),
                       ),
-                    );
-                  },
-                ).toList(),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: navbarIcons.map(
+                      (e) {
+                        final i = navbarIcons.indexOf(e);
+                        return Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<PageBloc>().add(
+                                    SelectPage(
+                                      i,
+                                      InitiatedBy.bottomNav,
+                                    ),
+                                  );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(23),
+                              child: Icon(
+                                e,
+                                size: 26,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ).toList(),
+                  ),
+                ],
               ),
             ),
           ),
