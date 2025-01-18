@@ -33,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Insights()],
         ),
-        SizedBox(height: 16),
+        SizedBox(height: 96),
       ],
     );
   }

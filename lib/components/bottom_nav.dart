@@ -20,14 +20,6 @@ class _BottomNavState extends State<BottomNav> {
     Icons.settings_outlined,
   ];
 
-  List<String> bottomNavigationName = [
-    'Home',
-    'Forecast',
-    'History',
-    'Alerts',
-    'Settings',
-  ];
-
   int selectedIndex = 0;
 
   @override

@@ -14,6 +14,7 @@ class App extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
+        fontFamily: 'Poppins',
         useMaterial3: true,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,

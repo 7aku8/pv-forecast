@@ -255,7 +255,7 @@ class _HomeViewState extends State<ForecastView> {
                                       'Savings with peak hours',
                                       style: TextStyle(
                                         color: Colors.black54,
-                                        fontSize: 14,
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ],
@@ -320,7 +320,7 @@ class _HomeViewState extends State<ForecastView> {
                                       'Energy consumption',
                                       style: TextStyle(
                                         color: Colors.black54,
-                                        fontSize: 14,
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ],

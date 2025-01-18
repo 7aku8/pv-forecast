@@ -11,7 +11,7 @@ class HomeTopBar extends StatelessWidget {
           'Dashboard',
           style: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
             color: Colors.black87,
           ),
         ),

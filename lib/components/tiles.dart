@@ -28,7 +28,7 @@ class Tiles extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w500,
-                        fontSize: 14,
+                        fontSize: 12,
                       ),
                     ),
                     SizedBox(height: 6),
@@ -76,7 +76,7 @@ class Tiles extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.orange,
                         fontWeight: FontWeight.w600,
-                        fontSize: 24,
+                        fontSize: 20,
                       ),
                     ),
                   ],

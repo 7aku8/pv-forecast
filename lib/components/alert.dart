@@ -32,7 +32,7 @@ class Alert extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.w600,
-                  fontSize: 18,
+                  fontSize: 16,
                 ),
               ),
               SizedBox(height: 6),
