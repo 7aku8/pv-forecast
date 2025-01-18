@@ -46,14 +46,14 @@ class _BottomNavState extends State<BottomNav> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(38),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: Container(
-            height: 80,
+            height: 76,
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(40),
+              borderRadius: BorderRadius.circular(38),
               border: Border.all(
                 color: Colors.white.withOpacity(0.2),
                 width: 2,
@@ -87,7 +87,7 @@ class _BottomNavState extends State<BottomNav> {
                             5), // 32 is padding, 4 is border
                     child: Container(
                       width: (MediaQuery.of(context).size.width - 32) / 5,
-                      height: 76,
+                      height: 72,
                       decoration: BoxDecoration(
                         color: Colors.orangeAccent.withOpacity(0.8),
                         borderRadius: BorderRadius.circular(40),
