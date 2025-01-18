@@ -57,26 +57,33 @@ class _DashboardPageState extends State<DashboardPage>
             _updateCurrentPageIndex(state.selectedPage);
           }
         },
-        child: SafeArea(
-          child: PageView(
-            controller: _pageViewController,
-            onPageChanged: _handlePageViewChanged,
-            children: _pages,
-          ),
+        child: Stack(
+          children: [
+            PageView(
+              controller: _pageViewController,
+              onPageChanged: _handlePageViewChanged,
+              children: _pages,
+            ),
+            const Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: BottomNav(),
+            ),
+          ],
         ),
       ),
-      bottomNavigationBar: const BottomNav(),
     );
   }
 
   void _handlePageViewChanged(int currentPageIndex) {
     _tabController.index = currentPageIndex;
     context.read<PageBloc>().add(
-          SelectPage(
-            currentPageIndex,
-            InitiatedBy.swipe,
-          ),
-        );
+      SelectPage(
+        currentPageIndex,
+        InitiatedBy.swipe,
+      ),
+    );
   }
 
   void _updateCurrentPageIndex(int index) {

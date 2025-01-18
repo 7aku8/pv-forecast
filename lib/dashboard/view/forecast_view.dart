@@ -201,124 +201,136 @@ class _HomeViewState extends State<ForecastView> {
             ],
           ),
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Icon(Icons.power_settings_new, color: Colors.orange),
-              Container(
-                height: 100,
-                width: 150,
-                color: Colors.grey.shade200,
-                child: Center(
-                    child: Icon(Icons.image, size: 40, color: Colors.grey)),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                      color: Colors.orange[300],
+                    ),
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.black87,
+                              child: Icon(
+                                Icons.wallet,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '45.88 PLN',
+                                      style: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Savings with peak hours',
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey.shade200),
+                    ),
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(24),
+                                border: Border.all(
+                                  color: Colors.grey.shade200,
+                                ),
+                              ),
+                              padding: const EdgeInsets.all(8),
+                              child: Icon(
+                                Icons.power,
+                                color: Colors.grey.shade300,
+                                size: 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '4.55 kWh',
+                                      style: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Energy consumption',
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          const SizedBox(height: 16),
-          // Expanded(
-          //   child: ListView(
-          //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          //     children: [
-          //       Container(
-          //         padding: const EdgeInsets.all(16.0),
-          //         decoration: BoxDecoration(
-          //           color: Colors.white,
-          //           borderRadius: BorderRadius.circular(12),
-          //           boxShadow: [
-          //             BoxShadow(
-          //                 color: Colors.grey.shade300,
-          //                 blurRadius: 10,
-          //                 offset: Offset(0, 5)),
-          //           ],
-          //         ),
-          //         child: Column(
-          //           crossAxisAlignment: CrossAxisAlignment.start,
-          //           children: [
-          //             const Text('8 kWh',
-          //                 style: TextStyle(
-          //                     fontSize: 24, fontWeight: FontWeight.bold)),
-          //             const SizedBox(height: 4),
-          //             const Text('Generate electricity',
-          //                 style: TextStyle(color: Colors.grey)),
-          //             const SizedBox(height: 16),
-          //             Row(
-          //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //               children: [
-          //                 Expanded(
-          //                   child: LinearProgressIndicator(
-          //                     value: 0.9,
-          //                     backgroundColor: Colors.grey.shade300,
-          //                     color: Colors.orange,
-          //                   ),
-          //                 ),
-          //                 const SizedBox(width: 16),
-          //                 ElevatedButton(
-          //                   onPressed: () {},
-          //                   style: ElevatedButton.styleFrom(
-          //                     backgroundColor: Colors.orange,
-          //                     shape: RoundedRectangleBorder(
-          //                         borderRadius: BorderRadius.circular(12)),
-          //                   ),
-          //                   child: const Text('Sell Electricity'),
-          //                 ),
-          //               ],
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //       const SizedBox(height: 16),
-          //       Row(
-          //         children: [
-          //           Expanded(
-          //             child: Container(
-          //               padding: const EdgeInsets.all(16.0),
-          //               decoration: BoxDecoration(
-          //                 color: Colors.orange.shade100,
-          //                 borderRadius: BorderRadius.circular(12),
-          //               ),
-          //               child: Column(
-          //                 children: [
-          //                   const Text('21200 USA',
-          //                       style: TextStyle(
-          //                           fontSize: 20, fontWeight: FontWeight.bold)),
-          //                   const SizedBox(height: 4),
-          //                   const Text('Current Income',
-          //                       style: TextStyle(color: Colors.grey)),
-          //                 ],
-          //               ),
-          //             ),
-          //           ),
-          //           const SizedBox(width: 16),
-          //           Expanded(
-          //             child: Container(
-          //               padding: const EdgeInsets.all(16.0),
-          //               decoration: BoxDecoration(
-          //                 color: Colors.white,
-          //                 borderRadius: BorderRadius.circular(12),
-          //                 boxShadow: [
-          //                   BoxShadow(
-          //                       color: Colors.grey.shade300,
-          //                       blurRadius: 10,
-          //                       offset: Offset(0, 5)),
-          //                 ],
-          //               ),
-          //               child: const Column(
-          //                 children: [
-          //                   const Text('120 KW/H',
-          //                       style: TextStyle(
-          //                           fontSize: 20, fontWeight: FontWeight.bold)),
-          //                   const SizedBox(height: 4),
-          //                   const Text('Time usage',
-          //                       style: TextStyle(color: Colors.grey)),
-          //                 ],
-          //               ),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          const SizedBox(height: 106),
         ],
       ),
     );
