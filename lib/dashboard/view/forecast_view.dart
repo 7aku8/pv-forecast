@@ -62,8 +62,11 @@ class _HomeViewState extends State<ForecastView> {
                     ),
                     const SizedBox(width: 16),
                     IconButton(
-                      icon: const Icon(Icons.restart_alt,
-                          color: Colors.black87, size: 32),
+                      icon: const Icon(
+                        Icons.restart_alt,
+                        color: Colors.black87,
+                        size: 32,
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -90,7 +93,9 @@ class _HomeViewState extends State<ForecastView> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 16),
+                      horizontal: 16,
+                      vertical: 16,
+                    ),
                     child: Column(
                       children: [
                         const SizedBox(height: 180),
@@ -154,7 +159,8 @@ class _HomeViewState extends State<ForecastView> {
                                                 ),
                                               ),
                                               child: const Text(
-                                                  'Check efficiency'),
+                                                'Check efficiency',
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -330,7 +336,7 @@ class _HomeViewState extends State<ForecastView> {
               ],
             ),
           ),
-          const SizedBox(height: 106),
+          const SizedBox(height: 96),
         ],
       ),
     );
