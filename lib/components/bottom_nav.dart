@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:pv_forecast/dashboard/state/page/page_bloc.dart';
 
 class BottomNav extends StatefulWidget {
@@ -29,7 +28,7 @@ class _BottomNavState extends State<BottomNav> {
     final pageState = context.read<PageBloc>().state;
 
     if (pageState is PageSelected) {
-      selectedIndex = pageState.selectedPage - 1;
+      selectedIndex = pageState.selectedPage;
     }
   }
 
