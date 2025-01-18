@@ -330,7 +330,7 @@ class _HomeViewState extends State<ForecastView> {
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 106),
         ],
       ),
     );
