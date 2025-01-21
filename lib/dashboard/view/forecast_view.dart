@@ -66,87 +66,93 @@ class _HomeViewState extends State<ForecastView> {
               ),
             ),
             const SizedBox(height: 32),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                color: Colors.white,
-                border: Border.all(color: Colors.grey.shade200),
-              ),
-              padding: const EdgeInsets.only(bottom: 16),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Hint',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(24),
-                            border: Border.all(
-                              color: Colors.grey.shade200,
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.shade200),
+                ),
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Hint',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54,
                             ),
                           ),
-                          padding: const EdgeInsets.all(8),
-                          child: Icon(
-                            Icons.power,
-                            color: Colors.grey.shade300,
-                            size: 24,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: RichText(
-                            text: const TextSpan(
-                              text:
-                                  'If you perform energy-intensive tasks during the peak production hours, you can save up to ',
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 14,
-                                height: 1.6,
+                          Transform.translate(
+                            offset: const Offset(8, -8),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(24),
+                                border: Border.all(
+                                  color: Colors.grey.shade200,
+                                ),
                               ),
-                              children: [
-                                TextSpan(
-                                  text: '30% of your energy bill,',
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                TextSpan(text: ' utilizing '),
-                                TextSpan(
-                                  text: '12.97 kWh',
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                TextSpan(text: ' of energy produced today.'),
-                              ],
+                              padding: const EdgeInsets.all(8),
+                              child: Icon(
+                                Icons.power,
+                                color: Colors.grey.shade300,
+                                size: 24,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: RichText(
+                              text: const TextSpan(
+                                text:
+                                    'If you perform energy-intensive tasks during the peak production hours, you can save up to ',
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 14,
+                                  height: 1.6,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: '30% of your energy bill,',
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(text: ' utilizing '),
+                                  TextSpan(
+                                    text: '12.97 kWh',
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(text: ' of energy produced today.'),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 24),
