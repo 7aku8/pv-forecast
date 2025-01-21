@@ -13,7 +13,7 @@ class MonthlyBarChart extends StatelessWidget {
         aspectRatio: 1.5,
         child: BarChart(
           BarChartData(
-            maxY: 200, // Adjust based on the maximum kW value
+            maxY: 30, // Adjust based on the maximum kW value
             barGroups: _buildBarGroups(),
             titlesData: FlTitlesData(
               bottomTitles: AxisTitles(
@@ -108,8 +108,8 @@ class MonthlyBarChart extends StatelessWidget {
   }
 
   List<BarChartGroupData> _buildBarGroups() {
-    final producedValues = [150.0, 120.0, 130.0, 140.0, 180.0, 170.0, 160.0, 190.0, 200.0, 140.0, 130.0, 120.0];
-    final consumedValues = [120.0, 100.0, 110.0, 115.0, 150.0, 145.0, 135.0, 170.0, 190.0, 130.0, 120.0, 110.0];
+    final producedValues = [12.0, 12.5, 17.3, 19.0, 23.0, 24.5, 23.8, 25.0, 24.9, 23.0, 19.0, 12.0];
+    final consumedValues = [20.2, 17.95, 19.57, 21.1, 22.0, 21.55, 21.02, 22.5, 22.41, 20.7, 19.8, 18.9];
 
     return List.generate(12, (index) {
       return BarChartGroupData(
@@ -118,12 +118,12 @@ class MonthlyBarChart extends StatelessWidget {
         barRods: [
           BarChartRodData(
             toY: producedValues[index],
-            color: contentColorCyan,
+            color: Colors.orangeAccent,
             width: 8,
           ),
           BarChartRodData(
             toY: consumedValues[index],
-            color: Colors.redAccent,
+            color: Colors.black87,
             width: 8,
           ),
         ],

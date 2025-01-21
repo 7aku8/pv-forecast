@@ -131,7 +131,7 @@ class _HistoryLinearChartState extends State<HistoryLinearChart> {
         ),
       ),
       borderData: FlBorderData(
-        show: true,
+        show: false,
         border: const Border(
           left: BorderSide(color: Colors.black, width: 1),
           bottom: BorderSide(color: Colors.black, width: 1),

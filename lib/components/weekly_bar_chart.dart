@@ -13,7 +13,7 @@ class WeeklyBarChart extends StatelessWidget {
         aspectRatio: 1.5,
         child: BarChart(
           BarChartData(
-            maxY: 50, // Adjust based on the maximum kW value
+            maxY: 30, // Adjust based on the maximum kW value
             barGroups: _buildBarGroups(),
             titlesData: FlTitlesData(
               // leftTitles: AxisTitles(
@@ -109,8 +109,8 @@ class WeeklyBarChart extends StatelessWidget {
   }
 
   List<BarChartGroupData> _buildBarGroups() {
-    final producedValues = [20.0, 30.0, 25.0, 35.0, 40.0, 45.0, 30.0];
-    final consumedValues = [15.0, 20.0, 18.0, 25.0, 30.0, 35.0, 25.0];
+    final producedValues = [20.0, 19.0, 19.0, 18.0, 22.0, 21.0, 23.0];
+    final consumedValues = [20.5, 19.0, 20.8, 21.8, 22.0, 8.6, 7.0];
 
     return List.generate(7, (index) {
       return BarChartGroupData(
@@ -119,12 +119,12 @@ class WeeklyBarChart extends StatelessWidget {
         barRods: [
           BarChartRodData(
             toY: producedValues[index],
-            color: contentColorCyan,
+            color: Colors.orangeAccent,
             width: 8,
           ),
           BarChartRodData(
             toY: consumedValues[index],
-            color: Colors.redAccent,
+            color: Colors.black87,
             width: 8,
           ),
         ],
