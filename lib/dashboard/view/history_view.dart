@@ -23,91 +23,99 @@ class _HistoryViewState extends State<HistoryView> {
       child: Column(
         children: [
           const SizedBox(height: 16),
-          // Wrap the CupertinoSlidingSegmentedControl in ClipRRect
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20), // Add custom border radius
-            child: CupertinoSlidingSegmentedControl<ChartType>(
-              backgroundColor: CupertinoColors.extraLightBackgroundGray,
-              thumbColor: Colors.pink.shade100,
-              groupValue: _selectedChart,
-              onValueChanged: (ChartType? value) {
-                if (value != null) {
-                  setState(() {
-                    _selectedChart = value;
-                  });
-                }
-              },
-              children: {
-                ChartType.daily: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
-                  child: Text(
-                    'Daily',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: _selectedChart == ChartType.daily
-                          ? Colors.pink
-                          : CupertinoColors.inactiveGray,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                ChartType.weekly: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
-                  child: Text(
-                    'Weekly',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: _selectedChart == ChartType.weekly
-                          ? Colors.pink
-                          : CupertinoColors.inactiveGray,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                ChartType.monthly: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
-                  child: Text(
-                    'Monthly',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: _selectedChart == ChartType.monthly
-                          ? Colors.pink
-                          : CupertinoColors.inactiveGray,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              },
-            ),
+          CupertinoSlidingSegmentedControl<ChartType>(
+            backgroundColor: CupertinoColors.extraLightBackgroundGray,
+            thumbColor: Colors.orangeAccent,
+            groupValue: _selectedChart,
+            onValueChanged: (ChartType? value) {
+              if (value != null) {
+                setState(() {
+                  _selectedChart = value;
+                });
+              }
+            },
+            children: {
+              ChartType.daily:
+                  _buildSegment('Daily', _selectedChart == ChartType.daily),
+              ChartType.weekly:
+                  _buildSegment('Weekly', _selectedChart == ChartType.weekly),
+              ChartType.monthly:
+                  _buildSegment('Monthly', _selectedChart == ChartType.monthly),
+            },
           ),
           const SizedBox(height: 16),
           Expanded(
-            child: _selectedChart == ChartType.daily
-                ? const Column(
-                    children: [
-                      HistoryLinearChart(),
-                      HistoryLabels(),
-                    ],
-                  )
-                : _selectedChart == ChartType.weekly
-                    ? const Column(
-                        children: [
-                          WeeklyBarChart(),
-                          HistoryLabels(),
-                        ],
-                      )
-                    : const Column(
-                        children: [
-                          MonthlyBarChart(),
-                          HistoryLabels(),
-                        ],
-                      ),
+            child: _buildSelectedChartWidget(),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildSegment(String label, bool isSelected) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 16,
+          color: isSelected ? Colors.black87 : CupertinoColors.inactiveGray,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSelectedChartWidget() {
+    switch (_selectedChart) {
+      case ChartType.daily:
+        return const DailyChartWidget();
+      case ChartType.weekly:
+        return const WeeklyChartWidget();
+      case ChartType.monthly:
+        return const MonthlyChartWidget();
+    }
+  }
+}
+
+class DailyChartWidget extends StatelessWidget {
+  const DailyChartWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        HistoryLinearChart(),
+        HistoryLabels(),
+      ],
+    );
+  }
+}
+
+class WeeklyChartWidget extends StatelessWidget {
+  const WeeklyChartWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        WeeklyBarChart(),
+        HistoryLabels(),
+      ],
+    );
+  }
+}
+
+class MonthlyChartWidget extends StatelessWidget {
+  const MonthlyChartWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        MonthlyBarChart(),
+        HistoryLabels(),
+      ],
     );
   }
 }
