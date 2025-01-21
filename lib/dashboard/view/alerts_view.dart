@@ -27,13 +27,17 @@ class _HomeViewState extends State<AlertsView> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ListView.separated(
-        itemCount: alerts.length,
-        separatorBuilder: (context, index) => const SizedBox(height: 16),
-        itemBuilder: (context, index) {
-          return _renderAlarm(alerts[index]);
-        },
-      ),
+            child: ListView.separated(
+              itemCount: alerts.length + 1,
+              separatorBuilder: (context, index) => const SizedBox(height: 16),
+              itemBuilder: (context, index) {
+                if (index == alerts.length) {
+                  return const SizedBox(height: 64);
+                }
+
+                return _renderAlarm(alerts[index]);
+              },
+            ),
     );
   }
 
@@ -148,9 +152,7 @@ class _HomeViewState extends State<AlertsView> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
-              children: [
-                Expanded(child: alert.message),
-              ],
+              children: [Expanded(child: alert.message)],
             ),
           ),
         ],
