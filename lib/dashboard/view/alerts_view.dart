@@ -37,8 +37,6 @@ class _HomeViewState extends State<AlertsView> {
     );
   }
 
-
-
   IconData _getIcon(Severity severity) {
     switch (severity) {
       case Severity.info:
@@ -61,29 +59,40 @@ class _HomeViewState extends State<AlertsView> {
         padding: const EdgeInsets.only(bottom: 16),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(alert.time),
-                const SizedBox(width: 8),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(24),
-                    border: Border.all(
-                      color: Colors.grey.shade200,
+            Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    _getName(alert.severity),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black87,
                     ),
                   ),
-                  padding: const EdgeInsets.all(8),
-                  child: Icon(
-                    Icons.power,
-                    color: Colors.grey.shade300,
-                    size: 24,
+                  const Spacer(),
+                  Text(alert.time),
+                  const SizedBox(width: 8),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(24),
+                      border: Border.all(
+                        color: Colors.grey.shade200,
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Icon(
+                      Icons.power,
+                      color: Colors.grey.shade300,
+                      size: 24,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Row(
                 children: [
@@ -101,40 +110,62 @@ class _HomeViewState extends State<AlertsView> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        color:
-            alert.severity == Severity.warning ? Colors.orange[100] : Colors.red[200],
+        color: alert.severity == Severity.warning
+            ? Colors.orange[100]
+            : Colors.red[200],
       ),
       padding: const EdgeInsets.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(alert.time),
-              const SizedBox(width: 8),
-              CircleAvatar(
-                backgroundColor: Colors.black87,
-                child: Icon(
-                  _getIcon(alert.severity),
-                  color: Colors.white,
-                  size: 24,
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  _getName(alert.severity),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black87,
+                  ),
                 ),
-              ),
-            ],
+                const Spacer(),
+                Text(alert.time),
+                const SizedBox(width: 8),
+                CircleAvatar(
+                  backgroundColor: Colors.black87,
+                  child: Icon(
+                    _getIcon(alert.severity),
+                    color: Colors.white,
+                    size: 24,
+                  ),
+                ),
+              ],
+            ),
           ),
           // const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
               children: [
-                Expanded(
-                  child: alert.message,),
+                Expanded(child: alert.message),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  String _getName(Severity severity) {
+    switch (severity) {
+      case Severity.info:
+        return 'Info';
+      case Severity.warning:
+        return 'Warning';
+      case Severity.error:
+        return 'Error';
+    }
   }
 }
