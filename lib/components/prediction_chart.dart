@@ -12,7 +12,6 @@ class PredictionChart extends StatelessWidget {
       child: BarChart(
         BarChartData(
           maxY: 7,
-          // Adjust based on the maximum kW value
           barGroups: _buildBarGroups(),
           titlesData: FlTitlesData(
             bottomTitles: AxisTitles(
@@ -35,6 +34,24 @@ class PredictionChart extends StatelessWidget {
           gridData: const FlGridData(show: false),
           borderData: FlBorderData(show: false),
           barTouchData: BarTouchData(enabled: false),
+          extraLinesData: ExtraLinesData(
+            horizontalLines: [
+              HorizontalLine(
+                y: 2.67, // Set this to the highest production value
+                color: Colors.green,
+                dashArray: [5, 5],
+                label: HorizontalLineLabel(
+                  show: true,
+                  labelResolver: (line) => 'Peak Production',
+                  alignment: Alignment.topRight,
+                  style: const TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -46,32 +63,10 @@ class PredictionChart extends StatelessWidget {
   }
 
   List<BarChartGroupData> _buildBarGroups() {
-    // generate list of kwh generated per hour in 1 day interval, so 24 values, there should be a spike in value aroung moon
     final producedValues = [
-      0.1,
-      0.12,
-      0.53,
-      0.82,
-      1.52,
-      1.79,
-      2.43,
-      2.31,
-      2.56,
-      3.67,
-      4.56,
-      5.67,
-      3.33,
-      2.33,
-      2.42,
-      2.33,
-      2.01,
-      1.21,
-      1.23,
-      1.21,
-      0.67,
-      0.56,
-      0.45,
-      0.34,
+      0.1, 0.12, 0.53, 0.82, 1.52, 1.79, 2.43, 2.31,
+      2.56, 3.67, 4.56, 5.67, 3.33, 2.33, 2.42, 2.33,
+      2.01, 1.21, 1.23, 1.21, 0.67, 0.56, 0.45, 0.34,
     ];
 
     return List.generate(24, (index) {
@@ -94,7 +89,6 @@ class PredictionChart extends StatelessWidget {
       return Container();
     }
 
-    // double to hours eg, 12:00
     return SideTitleWidget(
       meta: meta,
       child: Text(
