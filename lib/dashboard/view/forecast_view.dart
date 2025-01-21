@@ -149,7 +149,7 @@ class _HomeViewState extends State<ForecastView> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             Row(
               children: [
                 Button(
@@ -158,7 +158,7 @@ class _HomeViewState extends State<ForecastView> {
                 ),
               ],
             ),
-            const SizedBox(height: 96),
+            const SizedBox(height: 108),
           ],
         ),
       ),
