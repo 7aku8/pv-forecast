@@ -27,17 +27,17 @@ class _HomeViewState extends State<AlertsView> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: ListView.separated(
-              itemCount: alerts.length + 1,
-              separatorBuilder: (context, index) => const SizedBox(height: 16),
-              itemBuilder: (context, index) {
-                if (index == alerts.length) {
-                  return const SizedBox(height: 64);
-                }
+      child: ListView.separated(
+        itemCount: alerts.length + 1,
+        separatorBuilder: (context, index) => const SizedBox(height: 16),
+        itemBuilder: (context, index) {
+          if (index == alerts.length) {
+            return const SizedBox(height: 64);
+          }
 
-                return _renderAlarm(alerts[index]);
-              },
-            ),
+          return _renderAlarm(alerts[index]);
+        },
+      ),
     );
   }
 
@@ -54,14 +54,81 @@ class _HomeViewState extends State<AlertsView> {
 
   Widget _renderAlarm(Alert alert) {
     if (alert.severity == Severity.info) {
-      return Container(
+      return Padding(
+        padding: const EdgeInsets.only(right: 8),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+            color: Colors.white,
+            border: Border.all(color: Colors.grey.shade200),
+          ),
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      _getName(alert.severity),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(alert.time),
+                    const SizedBox(width: 8),
+                    Transform.translate(
+                      offset: const Offset(8, -8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(24),
+                          border: Border.all(
+                            color: Colors.grey.shade200,
+                          ),
+                        ),
+                        padding: const EdgeInsets.all(8),
+                        child: Icon(
+                          Icons.power,
+                          color: Colors.grey.shade300,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: alert.message,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
-          color: Colors.white,
-          border: Border.all(color: Colors.grey.shade200),
+          color: alert.severity == Severity.warning
+              ? Colors.orange[100]
+              : Colors.red[200],
         ),
         padding: const EdgeInsets.only(bottom: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 16),
@@ -78,84 +145,29 @@ class _HomeViewState extends State<AlertsView> {
                   const Spacer(),
                   Text(alert.time),
                   const SizedBox(width: 8),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: Colors.grey.shade200,
+                  Transform.translate(
+                    offset: const Offset(8, -8),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.black87,
+                      child: Icon(
+                        _getIcon(alert.severity),
+                        color: Colors.white,
+                        size: 24,
                       ),
-                    ),
-                    padding: const EdgeInsets.all(8),
-                    child: Icon(
-                      Icons.power,
-                      color: Colors.grey.shade300,
-                      size: 24,
                     ),
                   ),
                 ],
               ),
             ),
+            // const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Row(
-                children: [
-                  Expanded(
-                    child: alert.message,
-                  ),
-                ],
+                children: [Expanded(child: alert.message)],
               ),
             ),
           ],
         ),
-      );
-    }
-
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
-        color: alert.severity == Severity.warning
-            ? Colors.orange[100]
-            : Colors.red[200],
-      ),
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  _getName(alert.severity),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black87,
-                  ),
-                ),
-                const Spacer(),
-                Text(alert.time),
-                const SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundColor: Colors.black87,
-                  child: Icon(
-                    _getIcon(alert.severity),
-                    color: Colors.white,
-                    size: 24,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          // const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Row(
-              children: [Expanded(child: alert.message)],
-            ),
-          ),
-        ],
       ),
     );
   }
