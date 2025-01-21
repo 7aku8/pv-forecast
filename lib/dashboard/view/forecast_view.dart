@@ -138,6 +138,7 @@ class _HomeViewState extends State<ForecastView> {
                                                   'Between 10:00 - 12:00 today',
                                                   style: TextStyle(
                                                     color: Colors.black54,
+                                                    fontSize: 12,
                                                   ),
                                                 ),
                                               ],
@@ -154,7 +155,7 @@ class _HomeViewState extends State<ForecastView> {
                                                 ),
                                                 padding:
                                                     const EdgeInsets.symmetric(
-                                                  horizontal: 24,
+                                                  horizontal: 22,
                                                   vertical: 2,
                                                 ),
                                               ),

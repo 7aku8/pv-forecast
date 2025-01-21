@@ -17,7 +17,7 @@ class AlertsTopBar extends StatelessWidget {
         ),
         const Spacer(),
         IconButton(
-          icon: const Icon(Icons.notifications),
+          icon: const Icon(Icons.settings_outlined),
           onPressed: () {},
         ),
       ],
