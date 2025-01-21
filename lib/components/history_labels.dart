@@ -11,15 +11,17 @@ class HistoryLabels extends StatelessWidget {
       child: Row(
         children: [
           _buildExpandedLabel(
-            color: contentColorCyan,
+            color: Colors.orangeAccent,
             label: 'Produced',
-            icon: Icons.flash_on, // Example icon for Produced
+            icon: Icons.flash_on,
+            textColor: Colors.black, // Example text color
           ),
           const SizedBox(width: 16),
           _buildExpandedLabel(
-            color: Colors.redAccent,
+            color: Colors.black87,
             label: 'Consumed',
-            icon: Icons.power, // Example icon for Consumed
+            icon: Icons.power,
+            textColor: Colors.white, // Default text color
           ),
         ],
       ),
@@ -30,6 +32,7 @@ class HistoryLabels extends StatelessWidget {
     required Color color,
     required String label,
     required IconData icon,
+    Color textColor = Colors.white, // Default to white
   }) {
     return Expanded(
       child: Container(
@@ -43,16 +46,16 @@ class HistoryLabels extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: Colors.white, // Icon color for contrast
+              color: textColor, // Dynamic icon color
               size: 16,
             ),
             const SizedBox(width: 8), // Spacing between icon and text
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: Colors.white, // Text color for contrast
+                color: textColor, // Dynamic text color
               ),
             ),
           ],

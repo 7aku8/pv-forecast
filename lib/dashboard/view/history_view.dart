@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:pv_forecast/components/history_labels.dart';
 import 'package:pv_forecast/components/history_linear_chart.dart';
 import 'package:pv_forecast/components/weekly_bar_chart.dart';
@@ -87,6 +88,38 @@ class DailyChartWidget extends StatelessWidget {
       children: [
         HistoryLinearChart(),
         HistoryLabels(),
+        SizedBox(height: 32),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                child: _DataBox(
+                  value: "60kW",
+                  label: "Total Produced Today",
+                  insight: "10% more than yesterday",
+                  icon: Icons.arrow_upward_rounded,
+                  backgroundColor: Colors.orangeAccent,
+                  textColor: Colors.black,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                child: _DataBox(
+                  value: "40kW",
+                  label: "Total Consumed Today",
+                  insight: "2% less than yesterday",
+                  icon: Icons.arrow_downward_rounded,
+                  backgroundColor: Colors.white,
+                  textColor: Colors.black,
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -116,6 +149,101 @@ class MonthlyChartWidget extends StatelessWidget {
         MonthlyBarChart(),
         HistoryLabels(),
       ],
+    );
+  }
+}
+
+class _DataBox extends StatelessWidget {
+  final String value;
+  final String label;
+  final IconData icon;
+  final Color backgroundColor;
+  final Color textColor;
+  final String insight;
+
+  const _DataBox({
+    super.key,
+    required this.value,
+    required this.label,
+    required this.icon,
+    required this.backgroundColor,
+    required this.textColor,
+    required this.insight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        color: backgroundColor,
+        border: backgroundColor == Colors.white
+            ? Border.all(color: Colors.grey.shade200)
+            : null,
+      ),
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              CircleAvatar(
+                backgroundColor: Colors.black87,
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            value,
+                            style: TextStyle(
+                              color: textColor,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                        ],
+                      ),
+                                     Text(
+                        insight.toUpperCase(),
+                        style: TextStyle(
+                          color: textColor.withOpacity(0.7),
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        label,
+                        style: TextStyle(
+                          color: textColor.withOpacity(0.7),
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
