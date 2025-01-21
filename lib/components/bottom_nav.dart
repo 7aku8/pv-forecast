@@ -13,7 +13,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   List<IconData> navbarIcons = [
     Icons.home_outlined,
-    Icons.wb_sunny_outlined,
+    Icons.devices_outlined,
     Icons.history_outlined,
     Icons.notifications_outlined,
     Icons.settings_outlined,

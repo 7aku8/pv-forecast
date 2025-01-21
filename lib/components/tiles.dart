@@ -57,7 +57,7 @@ class Tiles extends StatelessWidget {
             child: const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.sunny, color: Colors.orange,),
+                Icon(Icons.devices_outlined, color: Colors.orange,),
                 SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

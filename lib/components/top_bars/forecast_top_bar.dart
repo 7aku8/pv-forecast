@@ -15,7 +15,7 @@ class ForecastTopBar extends StatelessWidget {
         ),
         SizedBox(width: 16),
         Text(
-          'Forecast',
+          'Devices',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w500,
