@@ -14,7 +14,7 @@ class _HomeViewState extends State<ForecastView> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -28,7 +28,7 @@ class _HomeViewState extends State<ForecastView> {
                 children: [
                   TextSpan(
                     text: '5.76 kWh',
-                    style: TextStyle(color: Colors.green, fontSize: 18),
+                    style: TextStyle(color: Colors.orangeAccent, fontSize: 18),
                   ),
                 ],
               ),
@@ -42,9 +42,10 @@ class _HomeViewState extends State<ForecastView> {
                   TextSpan(
                     text: '9:00 - 12:30',
                     style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.black87,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -58,9 +59,10 @@ class _HomeViewState extends State<ForecastView> {
                   TextSpan(
                     text: '21:00 - 03:00',
                     style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.black87,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -129,7 +131,7 @@ class _HomeViewState extends State<ForecastView> {
                                   TextSpan(
                                     text: '30% of your energy bill,',
                                     style: TextStyle(
-                                      color: Colors.green,
+                                      color: Colors.orangeAccent,
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -138,7 +140,7 @@ class _HomeViewState extends State<ForecastView> {
                                   TextSpan(
                                     text: '12.97 kWh',
                                     style: TextStyle(
-                                      color: Colors.green,
+                                      color: Colors.orangeAccent,
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                     ),

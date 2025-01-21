@@ -38,14 +38,14 @@ class PredictionChart extends StatelessWidget {
             horizontalLines: [
               HorizontalLine(
                 y: 2.67, // Set this to the highest production value
-                color: Colors.green,
+                color: Colors.orangeAccent,
                 dashArray: [5, 5],
                 label: HorizontalLineLabel(
                   show: true,
                   labelResolver: (line) => 'Peak Production',
                   alignment: Alignment.topRight,
                   style: const TextStyle(
-                    color: Colors.green,
+                    color: Colors.orangeAccent,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
