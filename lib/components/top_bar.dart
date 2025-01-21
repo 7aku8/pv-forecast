@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pv_forecast/components/top_bars/alerts_top_bar.dart';
+import 'package:pv_forecast/components/top_bars/devices_top_bar.dart';
 import 'package:pv_forecast/components/top_bars/forecast_top_bar.dart';
 import 'package:pv_forecast/components/top_bars/history_top_bar.dart';
 import 'package:pv_forecast/components/top_bars/home_top_bar.dart';
-import 'package:pv_forecast/components/top_bars/settings_top_bar.dart';
 import 'package:pv_forecast/dashboard/state/page/page_bloc.dart';
 
 class TopBar extends StatefulWidget implements PreferredSizeWidget {
@@ -21,9 +21,9 @@ class _TopBarState extends State<TopBar> {
   final _bars = [
     const HomeTopBar(),
     const ForecastTopBar(),
+    const DevicesTopBar(),
     const HistoryTopBar(),
     const AlertsTopBar(),
-    const SettingsTopBar(),
   ];
 
   @override

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pv_forecast/dashboard/state/page/page_bloc.dart';
 
-class ForecastTopBar extends StatelessWidget {
-  const ForecastTopBar({super.key});
+class DevicesTopBar extends StatelessWidget {
+  const DevicesTopBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ForecastTopBar extends StatelessWidget {
         ),
         const SizedBox(width: 16),
         const Text(
-          'Forecast',
+          'Devices',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w500,

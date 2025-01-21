@@ -13,10 +13,10 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   List<IconData> navbarIcons = [
     Icons.home_outlined,
+    Icons.batch_prediction_outlined,
     Icons.devices_outlined,
     Icons.history_outlined,
     Icons.notifications_outlined,
-    Icons.settings_outlined,
   ];
 
   int selectedIndex = 0;

@@ -1,5 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:pv_forecast/components/button.dart';
+import 'package:pv_forecast/components/prediction_chart.dart';
 
 class ForecastView extends StatefulWidget {
   const ForecastView({super.key});
@@ -12,278 +13,86 @@ class _HomeViewState extends State<ForecastView> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    RichText(
-                      text: const TextSpan(
-                        style: TextStyle(color: Colors.black87),
-                        children: [
-                          TextSpan(
-                            text: '30',
-                            style: TextStyle(fontSize: 72),
-                          ),
-                          TextSpan(
-                            text: 'panels',
-                            style:
-                                TextStyle(color: Colors.black54, fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Text(
-                      '2 LG360N1C-N5 360W',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.power_settings_new,
-                        color: Colors.black87,
-                        size: 32,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orangeAccent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                    const SizedBox(width: 16),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.restart_alt,
-                        color: Colors.black87,
-                        size: 32,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/panels.jpg'),
-                      fit: BoxFit.cover,
-                    ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Today's predictions", style: TextStyle(fontSize: 20)),
+            const PredictionChart(),
+            const SizedBox(height: 32),
+            RichText(
+              text: const TextSpan(
+                text: 'Peak production per hour: ',
+                style: TextStyle(color: Colors.black87, fontSize: 14),
+                children: [
+                  TextSpan(
+                    text: '5.76 kWh',
+                    style: TextStyle(color: Colors.green, fontSize: 18),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 16,
-                    ),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 180),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
-                                child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 24,
-                                      horizontal: 16,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  '8 kWh',
-                                                  style: TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize: 26,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Between 10:00 - 12:00 today',
-                                                  style: TextStyle(
-                                                    color: Colors.black54,
-                                                    fontSize: 12,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            TextButton(
-                                              onPressed: () {},
-                                              style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.orangeAccent,
-                                                foregroundColor: Colors.black87,
-                                                textStyle: const TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                  horizontal: 22,
-                                                  vertical: 2,
-                                                ),
-                                              ),
-                                              child: const Text(
-                                                'Check efficiency',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 16),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: LinearProgressIndicator(
-                                                value: 0.9,
-                                                backgroundColor: Colors
-                                                    .grey.shade300
-                                                    .withOpacity(
-                                                  0.6,
-                                                ),
-                                                color: Colors.orange,
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                                minHeight: 12,
-                                              ),
-                                            ),
-                                            const SizedBox(width: 16),
-                                            const Text(
-                                              '90%',
-                                              style: TextStyle(
-                                                color: Colors.black87,
-                                                fontSize: 16,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                ],
               ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      color: Colors.orange[300],
-                    ),
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.black87,
-                              child: Icon(
-                                Icons.wallet,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '45.88 PLN',
-                                      style: TextStyle(
-                                        color: Colors.black87,
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Savings with peak hours',
-                                      style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+            ),
+            const SizedBox(height: 8),
+            RichText(
+              text: const TextSpan(
+                text: 'Best hours to use energy: ',
+                style: TextStyle(color: Colors.black87, fontSize: 14),
+                children: [
+                  TextSpan(
+                    text: '9:00 - 12:30',
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            RichText(
+              text: const TextSpan(
+                text: 'Worst hours to use energy: ',
+                style: TextStyle(color: Colors.black87, fontSize: 14),
+                children: [
+                  TextSpan(
+                    text: '21:00 - 03:00',
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 32),
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.shade200),
                 ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade200),
-                    ),
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Hint',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54,
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: const Offset(8, -8),
+                            child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(24),
@@ -298,47 +107,66 @@ class _HomeViewState extends State<ForecastView> {
                                 size: 24,
                               ),
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '4.55 kWh',
-                                      style: TextStyle(
-                                        color: Colors.black87,
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Energy consumption',
-                                      style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: RichText(
+                              text: const TextSpan(
+                                text:
+                                    'If you perform energy-intensive tasks during the peak production hours, you can save up to ',
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 14,
+                                  height: 1.6,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: '30% of your energy bill,',
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(text: ' utilizing '),
+                                  TextSpan(
+                                    text: '12.97 kWh',
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(text: ' of energy produced today.'),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Row(
+              children: [
+                Button(
+                  onPressed: () {},
+                  text: 'Add to calendar',
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 96),
-        ],
+            const SizedBox(height: 108),
+          ],
+        ),
       ),
     );
   }

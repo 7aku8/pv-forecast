@@ -4,6 +4,7 @@ import 'package:pv_forecast/components/bottom_nav.dart';
 import 'package:pv_forecast/components/top_bar.dart';
 import 'package:pv_forecast/dashboard/state/page/page_bloc.dart';
 import 'package:pv_forecast/dashboard/view/alerts_view.dart';
+import 'package:pv_forecast/dashboard/view/devices_view.dart';
 import 'package:pv_forecast/dashboard/view/forecast_view.dart';
 import 'package:pv_forecast/dashboard/view/history_view.dart';
 import 'package:pv_forecast/dashboard/view/home_view.dart';
@@ -39,9 +40,9 @@ class _DashboardPageState extends State<DashboardPage>
   final _pages = const [
     HomeView(),
     ForecastView(),
+    DevicesView(),
     HistoryView(),
     AlertsView(),
-    SettingsView(),
   ];
 
   @override

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 import 'package:pv_forecast/utils/colors.dart';
 
 class MonthlyBarChart extends StatelessWidget {
