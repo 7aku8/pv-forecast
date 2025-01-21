@@ -88,38 +88,54 @@ class DailyChartWidget extends StatelessWidget {
       children: [
         HistoryLinearChart(),
         HistoryLabels(),
-        SizedBox(height: 32),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        SizedBox(height: 24),
+        Column(
           children: [
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: _DataBox(
-                  value: "60kW",
-                  label: "Total Produced Today",
-                  insight: "10% more than yesterday",
-                  icon: Icons.arrow_upward_rounded,
-                  backgroundColor: Colors.orangeAccent,
-                  textColor: Colors.black,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: _DataBox(
+                      value: "60 kWh",
+                      label: "Total Produced Today",
+                      insight: "10% more than yesterday",
+                      icon: Icons.arrow_upward_rounded,
+                      backgroundColor: Colors.orangeAccent,
+                      textColor: Colors.black,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: _DataBox(
-                  value: "40kW",
-                  label: "Total Consumed Today",
-                  insight: "2% less than yesterday",
-                  icon: Icons.arrow_downward_rounded,
-                  backgroundColor: Colors.white,
-                  textColor: Colors.black,
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: _DataBox(
+                      value: "40 kWh",
+                      label: "Total Consumed Today",
+                      insight: "2% less than yesterday",
+                      icon: Icons.arrow_downward_rounded,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
+            SizedBox(height: 16),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: _DataBox(
+                value: "95.32 PLN",
+                label: "Savings today",
+                insight: "10 PLN more than yesterday",
+                icon: Icons.arrow_upward_rounded,
+                backgroundColor: Colors.black12,
+                textColor: Colors.black,
+              ),
+            )
           ],
-        ),
+        )
       ],
     );
   }
@@ -134,6 +150,54 @@ class WeeklyChartWidget extends StatelessWidget {
       children: [
         WeeklyBarChart(),
         HistoryLabels(),
+        SizedBox(height: 24),
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: _DataBox(
+                      value: "300 kWh",
+                      label: "Total Produced this week",
+                      insight: "5% more than last week",
+                      icon: Icons.arrow_upward_rounded,
+                      backgroundColor: Colors.orangeAccent,
+                      textColor: Colors.black,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: _DataBox(
+                      value: "220 kWh",
+                      label: "Total Consumed this week",
+                      insight: "2% less than last week",
+                      icon: Icons.arrow_downward_rounded,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: _DataBox(
+                value: "832.21 PLN",
+                label: "Savings this week",
+                insight: "10 PLN more than yesterday",
+                icon: Icons.arrow_upward_rounded,
+                backgroundColor: Colors.black12,
+                textColor: Colors.black,
+              ),
+            )
+          ],
+        )
       ],
     );
   }
@@ -148,6 +212,54 @@ class MonthlyChartWidget extends StatelessWidget {
       children: [
         MonthlyBarChart(),
         HistoryLabels(),
+        SizedBox(height: 24),
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: _DataBox(
+                      value: "14,4 MWh",
+                      label: "Total Produced this year",
+                      insight: "3% less than last year",
+                      icon: Icons.arrow_downward_rounded,
+                      backgroundColor: Colors.orangeAccent,
+                      textColor: Colors.black,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: _DataBox(
+                      value: "10,4 MWh",
+                      label: "Total Consumed this year",
+                      insight: "3% less than last year",
+                      icon: Icons.arrow_downward_rounded,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: _DataBox(
+                value: "15,232 PLN",
+                label: "Savings this year",
+                insight: "300 PLN more than yesterday",
+                icon: Icons.arrow_upward_rounded,
+                backgroundColor: Colors.black12,
+                textColor: Colors.black,
+              ),
+            )
+          ],
+        )
       ],
     );
   }
@@ -198,7 +310,6 @@ class _DataBox extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
@@ -220,7 +331,7 @@ class _DataBox extends StatelessWidget {
                           const SizedBox(width: 4),
                         ],
                       ),
-                                     Text(
+                      Text(
                         insight.toUpperCase(),
                         style: TextStyle(
                           color: textColor.withOpacity(0.7),
