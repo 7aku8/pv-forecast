@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pv_forecast/components/button.dart';
 import 'package:pv_forecast/components/prediction_chart.dart';
 
 class ForecastView extends StatefulWidget {
@@ -148,6 +149,16 @@ class _HomeViewState extends State<ForecastView> {
                 ],
               ),
             ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Button(
+                  onPressed: () {},
+                  text: 'Add to calendar',
+                ),
+              ],
+            ),
+            const SizedBox(height: 96),
           ],
         ),
       ),
