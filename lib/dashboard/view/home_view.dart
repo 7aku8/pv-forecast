@@ -3,7 +3,7 @@ import 'package:pv_forecast/components/alert.dart';
 import 'package:pv_forecast/components/efficiency.dart';
 import 'package:pv_forecast/components/energy_output.dart';
 import 'package:pv_forecast/components/insights.dart';
-import 'package:pv_forecast/components/main_chart.dart';
+import 'package:pv_forecast/components/pie_chart.dart';
 import 'package:pv_forecast/components/tiles.dart';
 
 class HomeView extends StatefulWidget {
@@ -18,6 +18,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return ListView(
       children: const [
+        MainPieChart(),
         SizedBox(height: 16),
         EnergyOutput(),
         SizedBox(height: 32),

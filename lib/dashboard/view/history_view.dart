@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:pv_forecast/components/history_labels.dart';
 import 'package:pv_forecast/components/history_linear_chart.dart';
-import 'package:pv_forecast/components/weekly_bar_chart.dart';
 import 'package:pv_forecast/components/monthly_bar_chart.dart'; // Import the new MonthlyBarChart
+import 'package:pv_forecast/components/weekly_bar_chart.dart';
 
 enum ChartType { daily, weekly, monthly }
 
@@ -20,36 +19,39 @@ class _HistoryViewState extends State<HistoryView> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: Column(
-        children: [
-          const SizedBox(height: 16),
-          CupertinoSlidingSegmentedControl<ChartType>(
-            backgroundColor: CupertinoColors.extraLightBackgroundGray,
-            thumbColor: Colors.orangeAccent,
-            groupValue: _selectedChart,
-            onValueChanged: (ChartType? value) {
-              if (value != null) {
-                setState(() {
-                  _selectedChart = value;
-                });
-              }
-            },
-            children: {
-              ChartType.daily:
-                  _buildSegment('Daily', _selectedChart == ChartType.daily),
-              ChartType.weekly:
-                  _buildSegment('Weekly', _selectedChart == ChartType.weekly),
-              ChartType.monthly:
-                  _buildSegment('Monthly', _selectedChart == ChartType.monthly),
-            },
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        CupertinoSlidingSegmentedControl<ChartType>(
+          backgroundColor: CupertinoColors.extraLightBackgroundGray,
+          thumbColor: Colors.orangeAccent,
+          groupValue: _selectedChart,
+          onValueChanged: (ChartType? value) {
+            if (value != null) {
+              setState(() {
+                _selectedChart = value;
+              });
+            }
+          },
+          children: {
+            ChartType.daily:
+                _buildSegment('Daily', _selectedChart == ChartType.daily),
+            ChartType.weekly:
+                _buildSegment('Weekly', _selectedChart == ChartType.weekly),
+            ChartType.monthly:
+                _buildSegment('Monthly', _selectedChart == ChartType.monthly),
+          },
+        ),
+        Expanded(
+          child: ListView(
+            children: [
+              const SizedBox(height: 16),
+              _buildSelectedChartWidget(),
+              const SizedBox(height: 96),
+            ],
           ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: _buildSelectedChartWidget(),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -133,9 +135,9 @@ class DailyChartWidget extends StatelessWidget {
                 backgroundColor: Colors.black12,
                 textColor: Colors.black,
               ),
-            )
+            ),
           ],
-        )
+        ),
       ],
     );
   }
