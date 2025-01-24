@@ -4,6 +4,7 @@ import 'package:pv_forecast/components/history_labels.dart';
 import 'package:pv_forecast/components/history_linear_chart.dart';
 import 'package:pv_forecast/components/monthly_bar_chart.dart'; // Import the new MonthlyBarChart
 import 'package:pv_forecast/components/weekly_bar_chart.dart';
+import 'package:pv_forecast/components/insight_box.dart';
 
 enum ChartType { daily, weekly, monthly }
 
@@ -45,7 +46,7 @@ class _HistoryViewState extends State<HistoryView> {
         Expanded(
           child: ListView(
             children: [
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               _buildSelectedChartWidget(),
               const SizedBox(height: 96),
             ],
@@ -99,7 +100,7 @@ class DailyChartWidget extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: _DataBox(
+                    child: InsightBox(
                       value: "60 kWh",
                       label: "Total Produced Today",
                       insight: "10% more than yesterday",
@@ -112,7 +113,7 @@ class DailyChartWidget extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: _DataBox(
+                    child: InsightBox(
                       value: "40 kWh",
                       label: "Total Consumed Today",
                       insight: "2% less than yesterday",
@@ -127,7 +128,7 @@ class DailyChartWidget extends StatelessWidget {
             SizedBox(height: 16),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
-              child: _DataBox(
+              child: InsightBox(
                 value: "95.32 PLN",
                 label: "Savings today",
                 insight: "10 PLN more than yesterday",
@@ -161,7 +162,7 @@ class WeeklyChartWidget extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: _DataBox(
+                    child: InsightBox(
                       value: "300 kWh",
                       label: "Total Produced this week",
                       insight: "5% more than last week",
@@ -174,7 +175,7 @@ class WeeklyChartWidget extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: _DataBox(
+                    child: InsightBox(
                       value: "220 kWh",
                       label: "Total Consumed this week",
                       insight: "2% less than last week",
@@ -189,7 +190,7 @@ class WeeklyChartWidget extends StatelessWidget {
             SizedBox(height: 16),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
-              child: _DataBox(
+              child: InsightBox(
                 value: "832.21 PLN",
                 label: "Savings this week",
                 insight: "10 PLN more than yesterday",
@@ -223,7 +224,7 @@ class MonthlyChartWidget extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: _DataBox(
+                    child: InsightBox(
                       value: "14,4 MWh",
                       label: "Total Produced this year",
                       insight: "3% less than last year",
@@ -236,7 +237,7 @@ class MonthlyChartWidget extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: _DataBox(
+                    child: InsightBox(
                       value: "10,4 MWh",
                       label: "Total Consumed this year",
                       insight: "3% less than last year",
@@ -251,7 +252,7 @@ class MonthlyChartWidget extends StatelessWidget {
             SizedBox(height: 16),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
-              child: _DataBox(
+              child: InsightBox(
                 value: "5,232 PLN",
                 label: "Savings this year",
                 insight: "300 PLN more than yesterday",
@@ -263,100 +264,6 @@ class MonthlyChartWidget extends StatelessWidget {
           ],
         )
       ],
-    );
-  }
-}
-
-class _DataBox extends StatelessWidget {
-  final String value;
-  final String label;
-  final IconData icon;
-  final Color backgroundColor;
-  final Color textColor;
-  final String insight;
-
-  const _DataBox({
-    super.key,
-    required this.value,
-    required this.label,
-    required this.icon,
-    required this.backgroundColor,
-    required this.textColor,
-    required this.insight,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
-        color: backgroundColor,
-        border: backgroundColor == Colors.white
-            ? Border.all(color: Colors.grey.shade200)
-            : null,
-      ),
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.black87,
-                child: Icon(
-                  icon,
-                  color: Colors.white,
-                  size: 24,
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            value,
-                            style: TextStyle(
-                              color: textColor,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(width: 4),
-                        ],
-                      ),
-                      Text(
-                        insight.toUpperCase(),
-                        style: TextStyle(
-                          color: textColor.withOpacity(0.7),
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        label,
-                        style: TextStyle(
-                          color: textColor.withOpacity(0.7),
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
