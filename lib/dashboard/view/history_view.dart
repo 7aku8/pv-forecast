@@ -252,7 +252,7 @@ class MonthlyChartWidget extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: _DataBox(
-                value: "15,232 PLN",
+                value: "5,232 PLN",
                 label: "Savings this year",
                 insight: "300 PLN more than yesterday",
                 icon: Icons.arrow_upward_rounded,
