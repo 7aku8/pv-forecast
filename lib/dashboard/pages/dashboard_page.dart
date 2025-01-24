@@ -69,10 +69,129 @@ class _DashboardPageState extends State<DashboardPage>
           BlocListener<AlertCubit, AlertState>(
             listener: (context, state) {
               if (state is AlertTriggered) {
+                Widget content = Container();
+                var color = Colors.transparent;
+
                 if (state.type == AlertType.error) {
+                  content = Row(
+                    children: [
+                      const Icon(
+                        Icons.error,
+                        color: Colors.white,
+                        size: 32,
+                      ),
+                      const SizedBox(width: 12),
+                      Flexible(
+                        child: RichText(
+                          text: const TextSpan(
+                            children: [
+                              TextSpan(
+                                text:
+                                    'Panel 3 error\n',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'Check the system for issues',
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                  color = Colors.redAccent.withOpacity(0.8);
                 } else if (state.type == AlertType.warning) {
+                  content = Row(
+                    children: [
+                      const Icon(
+                        Icons.warning,
+                        color: Colors.white,
+                        size: 32,
+                      ),
+                      const SizedBox(width: 12),
+                      RichText(
+                        text: const TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Bad weather conditions\n',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Check the system for issues',
+                              style: TextStyle(
+                                color: Colors.white60,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                  color = Colors.orangeAccent.withOpacity(0.8);
                 } else if (state.type == AlertType.info) {
+                  content = Row(
+                    children: [
+                      const Icon(
+                        Icons.info,
+                        color: Colors.white,
+                        size: 32,
+                      ),
+                      const SizedBox(width: 12),
+                      RichText(
+                        text: const TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Today's Production\n",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '120 kWh',
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 26,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                  color = Colors.blueAccent.withOpacity(0.8);
                 }
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: content,
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    margin: const EdgeInsets.only(
+                      bottom: 60,
+                      right: 16,
+                      left: 16,
+                    ),
+                    backgroundColor: color,
+                  ),
+                );
               }
             },
           ),
@@ -99,11 +218,11 @@ class _DashboardPageState extends State<DashboardPage>
   void _handlePageViewChanged(int currentPageIndex) {
     _tabController.index = currentPageIndex;
     context.read<PageBloc>().add(
-      SelectPage(
-        currentPageIndex,
-        InitiatedBy.swipe,
-      ),
-    );
+          SelectPage(
+            currentPageIndex,
+            InitiatedBy.swipe,
+          ),
+        );
   }
 
   void _updateCurrentPageIndex(int index) {

@@ -21,7 +21,7 @@ class AlertCubit extends Cubit<AlertState> {
   void _scheduleNextAlert() {
     final random = Random();
     final randomSeconds =
-        random.nextInt(31) + 10;
+        random.nextInt(10) + 5;
 
     _timer = Timer(Duration(seconds: randomSeconds), () async {
       await _triggerAlert();
