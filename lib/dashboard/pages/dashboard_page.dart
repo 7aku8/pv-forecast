@@ -86,8 +86,7 @@ class _DashboardPageState extends State<DashboardPage>
                           text: const TextSpan(
                             children: [
                               TextSpan(
-                                text:
-                                    'Panel 3 error\n',
+                                text: 'Panel 3 error\n',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
@@ -104,6 +103,19 @@ class _DashboardPageState extends State<DashboardPage>
                             ],
                           ),
                         ),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.chevron_right,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                        onPressed: () {
+                          context.read<PageBloc>().add(
+                            const SelectPage(4, InitiatedBy.bottomNav),
+                          );
+                        },
                       ),
                     ],
                   );
@@ -137,6 +149,19 @@ class _DashboardPageState extends State<DashboardPage>
                             ),
                           ],
                         ),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.chevron_right,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                        onPressed: () {
+                          context.read<PageBloc>().add(
+                            const SelectPage(4, InitiatedBy.bottomNav),
+                          );
+                        },
                       ),
                     ],
                   );
@@ -172,6 +197,19 @@ class _DashboardPageState extends State<DashboardPage>
                           ],
                         ),
                       ),
+                      const Spacer(),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.chevron_right,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                        onPressed: () {
+                          context.read<PageBloc>().add(
+                                const SelectPage(4, InitiatedBy.bottomNav),
+                              );
+                        },
+                      ),
                     ],
                   );
                   color = Colors.blueAccent.withOpacity(0.8);
@@ -184,8 +222,8 @@ class _DashboardPageState extends State<DashboardPage>
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                     ),
-                    margin: const EdgeInsets.only(
-                      bottom: 60,
+                    margin: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewPadding.bottom + 30,
                       right: 16,
                       left: 16,
                     ),
