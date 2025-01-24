@@ -8,7 +8,8 @@ import 'package:pv_forecast/dashboard/view/devices_view.dart';
 import 'package:pv_forecast/dashboard/view/forecast_view.dart';
 import 'package:pv_forecast/dashboard/view/history_view.dart';
 import 'package:pv_forecast/dashboard/view/home_view.dart';
-import 'package:pv_forecast/dashboard/view/settings_view.dart';
+import 'package:pv_forecast/state/alert/alert_cubit.dart';
+import 'package:pv_forecast/state/alert/alert_type.dart';
 import 'package:pv_forecast/utils/colors.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -50,14 +51,32 @@ class _DashboardPageState extends State<DashboardPage>
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: const TopBar(),
-      body: BlocListener(
-        bloc: context.read<PageBloc>(),
-        listener: (context, state) {
-          if (state is PageSelected &&
-              state.initiatedBy == InitiatedBy.bottomNav) {
-            _updateCurrentPageIndex(state.selectedPage);
-          }
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<PageBloc, PageState>(
+            listener: (context, state) {
+              if (state is PageSelected &&
+                  state.initiatedBy == InitiatedBy.swipe) {
+                _tabController.index = state.selectedPage;
+              }
+
+              if (state is PageSelected &&
+                  state.initiatedBy == InitiatedBy.bottomNav) {
+                _updateCurrentPageIndex(state.selectedPage);
+              }
+            },
+          ),
+          BlocListener<AlertCubit, AlertState>(
+            listener: (context, state) {
+              if (state is AlertTriggered) {
+                if (state.type == AlertType.error) {
+                } else if (state.type == AlertType.warning) {
+                } else if (state.type == AlertType.info) {
+                }
+              }
+            },
+          ),
+        ],
         child: Stack(
           children: [
             PageView(
